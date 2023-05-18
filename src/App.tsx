@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
- ZapparCamera, InstantTracker, ZapparCanvas, BrowserCompatibility,
-} from '@zappar/zappar-react-three-fiber';
+  ZapparCamera,
+  InstantTracker,
+  ZapparCanvas,
+  BrowserCompatibility,
+} from "@zappar/zappar-react-three-fiber";
+import { Shark } from "./components/models/Shark";
 
 function App() {
   const [placementMode, setPlacementMode] = useState(true);
@@ -10,24 +14,27 @@ function App() {
       <BrowserCompatibility />
       <ZapparCanvas>
         <ZapparCamera />
-        <InstantTracker placementMode={placementMode} placementCameraOffset={[0, 0, -5]}>
-          <mesh>
-            <boxBufferGeometry />
-            <meshStandardMaterial color="hotpink" />
-          </mesh>
+        <InstantTracker
+          placementMode={placementMode}
+          placementCameraOffset={[0, 0, -5]}
+        >
+          <Shark />
         </InstantTracker>
         <directionalLight position={[2.5, 8, 5]} intensity={1.5} />
-
       </ZapparCanvas>
       <div
         id="zappar-button"
         role="button"
-        onKeyPress={() => { setPlacementMode(((currentPlacementMode) => !currentPlacementMode)); }}
+        onKeyPress={() => {
+          setPlacementMode((currentPlacementMode) => !currentPlacementMode);
+        }}
         tabIndex={0}
-        onClick={() => { setPlacementMode(((currentPlacementMode) => !currentPlacementMode)); }}
+        onClick={() => {
+          setPlacementMode((currentPlacementMode) => !currentPlacementMode);
+        }}
       >
         Tap here to
-        {placementMode ? ' place ' : ' pick up '}
+        {placementMode ? " place " : " pick up "}
         the object
       </div>
     </>
